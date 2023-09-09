@@ -33,6 +33,10 @@ class Stack<T = number> {
     this._items = [];
   }
 
+  public size(): number {
+    return this._items.length;
+  }
+
   public display(): T[] {
     return this._items;
   }

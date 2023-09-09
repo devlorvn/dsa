@@ -31,3 +31,5 @@ console.log(recursiveBS(sortedArray, 5, 0, sortedArray.length));
 console.log(recursiveBS(sortedArray, 4, 0, sortedArray.length));
 console.log(iterativeBS(sortedArray, 2));
 console.log(iterativeBS(sortedArray, 10));
+
+// Big-O = O(logn)

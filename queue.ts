@@ -1,24 +1,24 @@
 class Queue<T = number> {
   private _items: Record<number, T> = {};
-  private _head: number = 0;
-  private _tail: number = 0;
+  private _front: number = 0;
+  private _rear: number = 0;
 
   constructor() {}
 
-  public push(item: T): void {
-    this._items[this._tail] = item;
-    this._tail++;
+  public enqueue(item: T): void {
+    this._items[this._rear] = item;
+    this._rear++;
   }
 
-  public pop(): T {
-    const item: T = this._items[this._head];
-    delete this._items[this._head];
-    this._head++;
+  public dequeue(): T {
+    const item: T = this._items[this._front];
+    delete this._items[this._front];
+    this._front++;
     return item;
   }
 
   public peak(): T {
-    return this._items[this._head];
+    return this._items[this._front];
   }
 
   public isEmpty(): boolean {
@@ -32,15 +32,15 @@ class Queue<T = number> {
 
 const queue: Queue<number> = new Queue<number>();
 
-queue.push(9);
-queue.push(12);
-queue.push(15);
-queue.push(2);
-queue.push(5);
+queue.enqueue(9);
+queue.enqueue(12);
+queue.enqueue(15);
+queue.enqueue(2);
+queue.enqueue(5);
 
 console.log(queue.display());
 console.log(queue.peak());
-console.log(queue.pop());
-console.log(queue.pop());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
 console.log(queue.display());
 console.log(queue.isEmpty());
