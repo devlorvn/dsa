@@ -1,4 +1,4 @@
-class Queue<T = number> {
+export default class Queue<T = number> {
   private _items: Record<number, T> = {};
   private _front: number = 0;
   private _rear: number = 0;
