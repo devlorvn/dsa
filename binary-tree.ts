@@ -138,8 +138,13 @@ class BinarySearchTree<T = number> {
         return root.left;
       }
 
+      // cách 1 bẻ min của bên phải lên làm root
       root.value = this.min(root.right);
       root.right = this.deleteNode(root.right, root.value);
+
+      // cách 2, bẻ max của bên trái lên làm root
+      //   root.value = this.min(root.left);
+      //   root.left = this.deleteNode(root.left, root.value);
     }
     return root;
   }
