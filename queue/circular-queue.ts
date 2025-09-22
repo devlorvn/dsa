@@ -65,23 +65,3 @@ class CircularQueue<T> {
     }
   }
 }
-
-const q: CircularQueue<number> = new CircularQueue<number>(5);
-
-console.log(q.isEmpty());
-q.enqueue(10);
-q.enqueue(20);
-q.enqueue(30);
-q.enqueue(40);
-q.enqueue(50);
-
-console.log(q.isFull());
-q.print();
-
-console.log(q.dequeue());
-console.log(q.peek());
-q.print();
-
-q.enqueue(60);
-console.log(q.dequeue());
-q.print();

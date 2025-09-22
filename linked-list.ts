@@ -7,7 +7,77 @@ class Node<T> {
   }
 }
 
-export class LinkedList<T = number> {
+export class SinglyLinkedList<T = number> {
+  private _head: Node<T> | null = null;
+  private _tail: Node<T> | null = null;
+  private _size: number = 0;
+  constructor() {}
+  public prepend(value: T): void {
+    const newNode: Node<T> = new Node<T>(value);
+    if (!this._head) {
+      this._head = newNode;
+      this._tail = newNode;
+    } else {
+      newNode.next = this._head;
+      this._head = newNode;
+    }
+  }
+
+  public append(value: T): void {
+    const newNode: Node<T> = new Node<T>(value);
+    if (!this._head) {
+      this.prepend(value);
+    } else {
+      this._tail!.next = newNode;
+      this._tail = newNode;
+    }
+    this._size++;
+  }
+
+  public insert(value: T, index: number): boolean {
+    if (this._size < index || index < 0) {
+      return false;
+    }
+
+    if (index === 0) {
+      this.prepend(value);
+    } else {
+      const newNode: Node<T> = new Node<T>(value);
+      let prev = this._head!;
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next!;
+      }
+      prev.next = newNode;
+      newNode.next = prev.next;
+    }
+    this._size++;
+
+    return true;
+  }
+
+  public remove(index: number): T | null {
+    if (this._size < index || index < 0) {
+      return null;
+    }
+
+    let removeNode: Node<T> | null = null;
+    if (index === 0) {
+      removeNode = this._head!;
+      this._head = removeNode.next;
+    } else {
+      let prev: Node<T> = this._head!;
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next!;
+      }
+      removeNode = prev.next!;
+      prev.next = removeNode?.next;
+    }
+    this._size--;
+    return removeNode.value;
+  }
+}
+
+export class DoublyLinkedList<T = number> {
   private _head: Node<T> | null = null;
   private _size: number = 0;
 
@@ -54,7 +124,7 @@ export class LinkedList<T = number> {
       this.prepend(value);
     } else {
       let newNode: Node<T> = new Node<T>(value);
-      let prev: Node<T> = this._head as Node<T>;
+      let prev: Node<T> = this._head!;
       for (let i = 0; i < index - 1; i++) {
         prev = prev.next as Node<T>;
       }
@@ -171,26 +241,3 @@ export class LinkedList<T = number> {
     }
   }
 }
-
-const list: LinkedList = new LinkedList();
-
-console.log("List is empty? ", list.isEmpty());
-list.prepend(10);
-list.prepend(20);
-list.prepend(30);
-list.prepend(40);
-list.append(50);
-list.insert(60, 3);
-
-console.log(list.remove(-1));
-console.log(list.remove(10));
-console.log(list.remove(3));
-console.log(list.removeValue(35));
-console.log(list.removeValue(20));
-// console.log(list.search(10));
-
-list.print();
-console.log(list.size());
-
-list.reverse();
-list.print();
