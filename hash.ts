@@ -1,4 +1,4 @@
-class HashTable<T = any> {
+export class HashTable<T = any> {
   private _table: [string, T][][];
   constructor(private _size: number) {
     this._table = new Array(_size);

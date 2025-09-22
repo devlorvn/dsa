@@ -1,4 +1,4 @@
-class Stack<T = number> {
+export class Stack<T = number> {
   private _items: T[] = [];
   private _maxSize: number;
 

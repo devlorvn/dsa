@@ -1,4 +1,4 @@
-class Graph {
+export class Graph {
   public adjacencyList: Record<string, Set<string>>;
 
   constructor() {
