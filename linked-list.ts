@@ -21,6 +21,7 @@ export class SinglyLinkedList<T = number> {
       newNode.next = this._head;
       this._head = newNode;
     }
+    this._size++;
   }
 
   public append(value: T): void {
@@ -47,8 +48,8 @@ export class SinglyLinkedList<T = number> {
       for (let i = 0; i < index - 1; i++) {
         prev = prev.next!;
       }
+      newNode.next = prev.next!.next;
       prev.next = newNode;
-      newNode.next = prev.next;
     }
     this._size++;
 
