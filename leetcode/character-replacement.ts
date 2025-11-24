@@ -1,3 +1,6 @@
+// maxFreq = số lần xuất hiện nhiều nhất của 1 character trong window
+// windowLen = r - l + 1
+// valid condition: windowLen - maxFreq <= k
 function characterReplacement(s: string, k: number): number {
   const countMap: Record<string, number> = {};
   let l = 0,
